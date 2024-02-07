@@ -4,6 +4,7 @@ import Counter from "./components/Counter"
 import List from "./components/List"
 
 import { useState, useEffect, useCallback, useMemo, useRef} from 'react'
+import { CounterProvider } from "./components/CounterContext"
 
 interface User {
   id: number,
@@ -43,7 +44,9 @@ function App() {
     <>
       <Heading title={"Hello"} />
       <Section title={"Different Title"}>This is my Section.</Section>
-      <Counter>{(num: number) => <>Current Count: {num}</>}</Counter>
+      <CounterProvider>
+        <Counter>{(num: number) => <>Current Count: {num}</>}</Counter>
+      </CounterProvider>
       <List items={["☕ Coffee", "🌮 Tacos", "💻 Code"]} render={(item: string) => <span className="bold">{item}</span>} />
 
       {/* hooks */}
